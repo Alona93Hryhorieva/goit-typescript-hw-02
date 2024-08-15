@@ -1,43 +1,18 @@
+import { Image } from "../../types";
+
 interface ImageCardProps {
-  imageItem: {
-    urls: { small: string; regular: string };
-    alt_description: string;
-  };
+  image: Image;
   openModal: (imageUrl: string) => void;
 }
 
-export default function ImageCard({
-  imageItem: {
-    urls: { small, regular },
-    alt_description,
-  },
-  openModal,
-}: ImageCardProps) {
+export default function ImageCard({ image, openModal }: ImageCardProps) {
   return (
     <div>
       <img
-        src={small}
-        alt={alt_description}
-        onClick={() => openModal(regular)}
+        src={image.urls.small}
+        alt={image.alt_description}
+        onClick={() => openModal(image.urls.regular)}
       />
     </div>
   );
 }
-
-// export default function ImageCard({
-//   imageItem: {
-//     urls: { small, regular },
-//     alt_description,
-//   },
-//   openModal,
-// }) {
-//   return (
-//     <div>
-//       <img
-//         src={small}
-//         alt={alt_description}
-//         onClick={() => openModal(regular)}
-//       />
-//     </div>
-//   );
-// }
